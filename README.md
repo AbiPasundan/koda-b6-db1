@@ -22,7 +22,9 @@ AUTHOR {
 ```mermaid
 
 erDiagram
-    buku ||--|{kategori: "kategori"
+    buku ||--|{kategori: ""
+    buku }|--|{petugas: ""
+    buku }|--||peminjam: ""
     buku {
         string id
         string name
@@ -42,13 +44,13 @@ erDiagram
         int id
         string books
     }
-    petugas||--||borrowing_book : "has"
+    petugas||--|{borrowing_book : ""
     petugas {
         int id
         string name
         string age
     }
-    peminjam||--||borrowing_book : "has"
+    peminjam||--|{borrowing_book : ""
     peminjam {
         int id
         string name
@@ -59,7 +61,9 @@ erDiagram
 
     borrowing_book {
         int id
-        string carRegistrationNumber
-        string driverLicence
+        string book
+        string peminjam_name
+        string expired_date
+        string forfeit
     }
 ```
