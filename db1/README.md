@@ -1,65 +1,60 @@
-# Minitask
+# Database
 
-<!--
+* datatbase
+* jenis-jenis datatbase
+* ERD datatbase
+* datatbase
 
-one to one relationship
-BOOK ||--o{ AUTHOR : allows
+## What is?
 
-AUTHOR ||--||buku : has
-AUTHOR {
-    int id
-    string name
-    int age
-    string books
-}
+sekumpulan data yang disimpan secara sistematis
+tujuannya adalah untuk memudahkan penyimpanan, pengambila, pembaruan dan analisis data
 
-||--|{ : One and only one to One or many
-||--o{ : One and only one to Zero or many
-|o--|{ : Zero or one to One or many
+## Jenis-jenis Database
 
- -->
+* relational (sql)
+  * menggunakan query sql
+  * kompleks dengan relasi
+  * Postgree mariadb
+* no sql
+  * Menggunakan document based storage
+  * Flexsible tanpa skema tetap
+  * Mongodb
+* Database Khusus
+  * time-series db (influxDB)
+  * In-Memory DB (Redis, memcached)
 
-```mermaid
+## ERD
 
-erDiagram
-    buku ||--|{kategori: "kategori"
-    buku {
-        string id
-        string name
-        string title
-        string author
-        string kategori
-        string bookshelf
-    }
+representasi dari struktur data suatu sistem atau database yang menghubungkan suatu entitas dengan entitas kaub beserta atributnya
+Digunakan dalam perancangan database
+Kardinalitas menunjukan berapa banyak entitas A dapat berelasi dengan entitas B dan sebaliknya
 
-    kategori {
-        string id
-        string name
-    }
+### jenis kardinalitas
 
-    rak_buku||--|{buku : ""
-    rak_buku {
-        int id
-        string books
-    }
-    petugas||--||borrowing_book : "has"
-    petugas {
-        int id
-        string name
-        string age
-    }
-    peminjam||--||borrowing_book : "has"
-    peminjam {
-        int id
-        string name
-        string age
-        string addrees
-        string borrow_books
-    }
+tiga jenis utama kardinalitas
 
-    borrowing_book {
-        int id
-        string carRegistrationNumber
-        string driverLicence
-    }
-```
+* one to one (1:1)
+contoh: satu user mempunyai satu profile
+* one to many (1:N)
+satu kategori memiliki banyak prooduct
+* many to many (M:N)
+banyak product bisa dipasok oleh banyak supplier
+
+<!-- |----------------------------|
+|        product             |
+|----------------------------|
+|  string |  id_product | pk |
+|----------------------------| -->
+
+Membuat minitask erd untuk sistem perpustakaan
+entitas terdiri dari buku, kategori, rak_buku,petugas, peminjam
+tentukan relasi dan kardinalitas antara entitas
+tentukan setiap atribut sintak
+
+koda-b6-db1
+
+
+
+
+
