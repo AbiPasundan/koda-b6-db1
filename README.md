@@ -27,11 +27,12 @@ erDiagram
     buku }|--||peminjam: ""
     buku {
         string id
-        string name
-        string title
+        string title_book
+        string description
         string author
         string kategori
         string bookshelf
+        timestamp created_at
     }
 
     kategori {
@@ -43,12 +44,14 @@ erDiagram
     rak_buku {
         int id
         string books
+        timestamp created_at
     }
     petugas||--|{borrowing_book : ""
     petugas {
         int id
         string name
-        string age
+        int age
+        timestamp created_at
     }
     peminjam||--|{borrowing_book : ""
     peminjam {

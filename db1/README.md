@@ -55,7 +55,7 @@ koda-b6-db1
 
 Membuat ERD untuk sistem e-wallet
 tentukan entitas yang diperlukan
-tentukan rekasi dan kardinalitas anta entitas
+tentukan relasi dan kardinalitas anta entitas
 tentukan setiap attribute untuk entitas
 tulis dalam syntax mermaid
 koda-b6-db2
