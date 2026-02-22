@@ -1,5 +1,9 @@
 # Minitask
 
+## Screenshot
+
+![screenchot ERD Diagram](sc.png)
+
 ```mermaid
 
 erDiagram

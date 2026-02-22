@@ -31,8 +31,8 @@ CREATE TABLE "kategori" (
 CREATE TABLE "borrow_books" (
     "id" BIGSERIAL PRIMARY KEY,
     "book_id" INT,
-    "peminjam_name" VARCHAR(100),
-    "petugas_name" VARCHAR(100),
+    "peminjam_name_id" INT,
+    "petugas_name_id" INT,
     "forfeit" DECIMAL
 );
   
@@ -47,9 +47,13 @@ CREATE TABLE "peminjam" (
 ALTER TABLE "buku" ADD CONSTRAINT fk_rak_buku FOREIGN KEY (bookshelf_id) REFERENCES rak_buku(id);
 ALTER TABLE "buku" ADD CONSTRAINT fk_kategori FOREIGN KEY (kategori_id) REFERENCES kategori(id);
 ALTER TABLE "borrow_books" ADD CONSTRAINT fk_book_id FOREIGN KEY (book_id) REFERENCES buku(id);
+ALTER TABLE "borrow_books" ADD CONSTRAINT fk_peminjam_name_id FOREIGN KEY (peminjam_name_id) REFERENCES peminjam(id);
+ALTER TABLE "borrow_books" ADD CONSTRAINT fk_petugas_name_id FOREIGN KEY (petugas_name_id) REFERENCES petugas(id);
 
-INSERT INTO kategori (name) VALUES ('Fiksi'), ('Fiksi'), ('Fiksi'), ('Fiksi'), ('Fiksi'), ('Fiksi'), ('Fiksi'), ('Fiksi'), ('Fiksi'), ('Fiksi');
+INSERT INTO kategori (name) VALUES ('Komik'), ('Sains'), ('Sejarah'), ('Matematika'), ('Novel'), ('Bahasa'), ('Fiksi'), ('Fiksi'), ('Fiksi'), ('Sastra');
+
 INSERT INTO rak_buku (rak_name) VALUES ('A'), ('B'), ('C'), ('D'), ('E'), ('F'), ('G'), ('H'), ('I'), ('J') ;
-INSERT INTO petugas (name, age) VALUES ('Andi',12),('Andi',12),('Andi',12),('Andi',12),('Andi',12),('Andi',12),('Andi',12),('Andi',12),('Andi',12),('Andi',12);
+
+INSERT INTO petugas (name, age) VALUES ('Andi',12),('Ahmad',13),('Ari',14),('Adit',15),('Agis',16),('Asep',17),('Anggi',20),('Aria',24),('Anton',45),('Aang',29);
 
 SELECT * FROM kategori;
