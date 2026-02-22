@@ -11,8 +11,8 @@ erDiagram
         varchar title_book
         varchar description
         varchar author
-        varchar kategori fk
-        varchar bookshelf fk
+        varchar kategori_id fk
+        varchar bookshelf_id fk
         timestamp created_at
     }
 
@@ -24,6 +24,7 @@ erDiagram
     rak_buku||--|{buku : ""
     rak_buku {
         int id pk
+        rak_name varchar
         timestamp created_at
     }
     petugas {
@@ -40,12 +41,12 @@ erDiagram
         varchar addrees
     }
 
-    buku ||--||borrowing_book: ""
+    buku ||--|{borrowing_book: ""
     borrowing_book {
         int id pk
-        varchar book
+        varchar book_id fk
         varchar peminjam_name fk
-        varchar expired_date
+        varchar petugas_name fk
         varchar forfeit
     }
 ```
