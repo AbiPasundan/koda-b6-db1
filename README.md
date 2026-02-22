@@ -1,72 +1,51 @@
 # Minitask
 
-<!--
-
-one to one relationship
-BOOK ||--o{ AUTHOR : allows
-
-AUTHOR ||--||buku : has
-AUTHOR {
-    int id
-    string name
-    int age
-    string books
-}
-
-||--|{ : One and only one to One or many
-||--o{ : One and only one to Zero or many
-|o--|{ : Zero or one to One or many
-
- -->
-
 ```mermaid
 
 erDiagram
     buku ||--|{kategori: ""
-    buku }|--|{petugas: ""
-    buku }|--||peminjam: ""
+    petugas }|--|{borrowing_book: ""
+
     buku {
-        string id
-        string title_book
-        string description
-        string author
-        string kategori
-        string bookshelf
+        varchar id pk
+        varchar title_book
+        varchar description
+        varchar author
+        varchar kategori fk
+        varchar bookshelf fk
         timestamp created_at
     }
 
     kategori {
-        string id
-        string name
+        varchar id pk
+        varchar name
     }
 
     rak_buku||--|{buku : ""
     rak_buku {
-        int id
-        string books
+        int id pk
         timestamp created_at
     }
-    petugas||--|{borrowing_book : ""
     petugas {
-        int id
-        string name
+        int id pk
+        varchar name
         int age
         timestamp created_at
     }
-    peminjam||--|{borrowing_book : ""
+    peminjam ||--||borrowing_book: ""
     peminjam {
-        int id
-        string name
-        string age
-        string addrees
-        string borrow_books
+        int id pk
+        varchar name
+        int age
+        varchar addrees
     }
 
+    buku ||--||borrowing_book: ""
     borrowing_book {
-        int id
-        string book
-        string peminjam_name
-        string expired_date
-        string forfeit
+        int id pk
+        varchar book
+        varchar peminjam_name fk
+        varchar expired_date
+        varchar forfeit
     }
 ```
