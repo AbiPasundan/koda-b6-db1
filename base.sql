@@ -1,4 +1,5 @@
--- DROP TABLE rak_buku, buku, petugas, kategori, peminjam, borrow_books;-- DROP TABLE rak_buku, buku, petugas, kategori, peminjam, borrow_books, status; 
+-- DROP TABLE rak_buku, buku, petugas, kategori, peminjam, borrow_books, status; 
+
 
 CREATE TABLE "rak_buku" (
     "id" BIGSERIAL PRIMARY KEY UNIQUE,
@@ -41,7 +42,7 @@ CREATE TABLE "borrow_books" (
     "peminjam_name_id" INT, -- fk
     "petugas_name_id" INT, -- fk
     "date" TIMESTAMP,
-    "book_status" VARCHAR(30),
+    "book_status" INT,
     "due" VARCHAR(30),
     "forfeit" DECIMAL
 );
@@ -59,6 +60,7 @@ ALTER TABLE "buku" ADD CONSTRAINT fk_kategori FOREIGN KEY (kategori_id) REFERENC
 ALTER TABLE "borrow_books" ADD CONSTRAINT fk_book_id FOREIGN KEY (book_id) REFERENCES buku(book_id);
 ALTER TABLE "borrow_books" ADD CONSTRAINT fk_peminjam_name_id FOREIGN KEY (peminjam_name_id) REFERENCES peminjam(id);
 ALTER TABLE "borrow_books" ADD CONSTRAINT fk_petugas_name_id FOREIGN KEY (petugas_name_id) REFERENCES petugas(id);
+ALTER TABLE "borrow_books" ADD CONSTRAINT fk_book_status FOREIGN KEY (book_status) REFERENCES status(status_id);
 
 INSERT INTO kategori (name) VALUES ('Komik'), ('Sains'), ('Sejarah'), ('Matematika'), ('Novel'), ('Bahasa'), ('Fiksi'), ('Fiksi'), ('Fiksi'), ('Sastra');
 
