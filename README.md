@@ -7,16 +7,25 @@
 ```mermaid
 
 erDiagram
-    buku ||--|{kategori: ""
+    kategori ||--|{buku: ""
     petugas }|--|{borrowing_book: ""
 
-    buku {
+    penulis {
         varchar id pk
+        varchar name
+        int age
+        varchar email
+        timestamp created_at
+    }
+    penulis ||--|{buku: ""
+    buku {
+        varchar book_id pk
         varchar title_book
-        varchar description
-        varchar author
-        varchar kategori_id fk
-        varchar bookshelf_id fk
+        text description
+        int penulis_id fk
+        int kategori_id fk
+        int bookshelf_id fk
+        int total_book
         timestamp created_at
     }
 
@@ -32,14 +41,14 @@ erDiagram
         timestamp created_at
     }
     petugas {
-        int id pk
+        int petugas_id pk
         varchar name
         int age
         timestamp created_at
     }
-    peminjam ||--||borrowing_book: ""
+    peminjam ||--|{borrowing_book: ""
     peminjam {
-        int id pk
+        int peminjam_id pk
         varchar name
         int age
         varchar addrees
@@ -48,9 +57,20 @@ erDiagram
     buku ||--|{borrowing_book: ""
     borrowing_book {
         int id pk
-        varchar book_id fk
-        varchar peminjam_name fk
-        varchar petugas_name fk
-        varchar forfeit
+        int book_id fk
+        int peminjam_id fk
+        int petugas_id fk
+        timestamp date
+        varchar status fk
+        varchar due
+        decimal forfeit
     }
+    status ||--|{borrowing_book:""
+    status {
+        int status_id pk
+        varchar borrowed
+        varchar returned
+        varchar lost
+    }
+
 ```
